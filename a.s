@@ -1372,15 +1372,21 @@ min_caml_read_int :
 min_caml_read_float : 
 	rdf	f2
 	return
-min_caml_init_float_array : 
+min_caml_init_float_array :
+	addi	r30 r0 8
+	ptc	r30
 	bne	r5 r0 L_else_8120
 	return
-L_else_8120 : 
+L_else_8120 :
+	addi	r30 r0 9
+	ptc	r30
 	fsti	f2 r4 0
 	subi	r5 r5 1
 	addi	r4 r4 1
 	jump	min_caml_init_float_array
-min_caml_create_array : 
+min_caml_create_array :
+	addi	r30 r0 11
+	ptc	r30
 	add	r6 r0 r3
 	add	r3 r3 r4
 	sti	r6 r2 0
@@ -1394,15 +1400,21 @@ min_caml_create_array :
 	ldi	r4 r2 0
 	add	r4 r0 r4
 	return
-min_caml_init_array : 
+min_caml_init_array :
+	addi	r30 r0 12
+	ptc	r30
 	bne	r5 r0 L_else_8122
 	return
-L_else_8122 : 
+L_else_8122 :
+	addi	r30 r0 13
+	ptc	r30
 	sti	r6 r4 0
 	subi	r5 r5 1
 	addi	r4 r4 1
 	jump	min_caml_init_array
-min_caml_create_float_array : 
+min_caml_create_float_array :
+	addi	r30 r0 7
+	ptc	r30
 	add	r5 r0 r3
 	add	r3 r3 r4
 	sti	r5 r2 0
@@ -7649,7 +7661,9 @@ L_cont_8471 :
 	ldi	r6 r2 1
 	ldi	r7 r2 3
 	jump	L_scan_line_2931
-L_create_float5x3array_2937 : 
+L_create_float5x3array_2937 :
+	addi	r30 r0 10
+	ptc	r30
 	addi	r4 r0 3
 	fldi	f2 r0 53
 	addi	r2 r2 1
@@ -7711,7 +7725,9 @@ L_create_float5x3array_2937 :
 	sti	r4 r5 0
 	add	r4 r0 r6
 	return
-L_create_pixel_2939 : 
+L_create_pixel_2939 :
+	addi	r30 r0 6
+	ptc	r30
 	addi	r4 r0 3
 	fldi	f2 r0 53
 	addi	r2 r2 1
@@ -7776,14 +7792,14 @@ L_create_pixel_2939 :
 	sti	r4 r5 0
 	add	r4 r0 r5
 	return
-L_init_line_elements_2941 : 
+L_init_line_elements_2941 :
+	addi	r30 r0 5
+	ptc	r30
 	addi	r6 r0 0
 	bgt	r6 r5 L_else_8472
 	sti	r5 r2 0
 	sti	r4 r2 1
 	addi	r2 r2 3
-	addi	r30 r0 5
-	ptc     r30
 	call	L_create_pixel_2939
 	subi	r2 r2 3
 	ldi	r5 r2 0
@@ -7793,6 +7809,8 @@ L_init_line_elements_2941 :
 	addi	r4 r0 1
 	sub	r5 r5 r4
 	add	r4 r0 r6
+	addi	r30 r0 14
+	ptc	r30
 	jump	L_init_line_elements_2941
 L_else_8472 : 
 	add	r4 r0 r4
