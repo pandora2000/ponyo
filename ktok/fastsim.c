@@ -530,7 +530,7 @@ program2 *parse_all2(program * program)
     arg2 = ist.name[2];
     arg3 = ist.name[3];
     //printf("%s\t%s %s %s\n", ist.name[0], ist.name[1], ist.name[2], ist.name[3]);
-    print_instruction(ist);
+    //print_instruction(ist);
     if (strcmp(iname, "nop") == 0) {
       answer->insts[i].name[0] = 0;
     }
@@ -892,11 +892,15 @@ int do_assemble2(program *program, program2 * program2)
     */
     //命令が存在しなかった場合error parseでやっているのでいらない。
     //printf("ist = %d\n",iname);
-    count++;
+    /*    count++;
+    if(count < 10000){
     printf("%d  [%d] ",count,pc);
     print_instruction(program->insts[pc]);
-    
-    
+    //if(count % 20 == 0){
+      print_register();
+      //}
+    }
+    */
     nextpc++;
 
 
@@ -994,7 +998,7 @@ int main(int argc, char *argv[])
   answer = parse_all(buf, i);
   answer2 = parse_all2(parse_all(buf, i));
   
-  //print_program(answer);
+  print_program(answer);
 
   t1 = gettimeofday_sec();
   do_assemble2(answer, answer2);
